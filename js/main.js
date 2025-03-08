@@ -13,6 +13,7 @@ const detailsButtonCreator = (id) => {
     const detailsButton = document.createElement('a');
     detailsButton.className = 'details-btn btn btn-success';
     detailsButton.innerText = 'Details';
+    detailsButton.target = '_blank';
     detailsButton.href = detailsURL.href;
     
     return detailsButton;
