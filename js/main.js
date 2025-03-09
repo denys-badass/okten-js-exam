@@ -5,7 +5,7 @@
 // 3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід  на сторінку user-details.html,
 // котра має детальну інфорацію про об'єкт на який клікнули
 const usersURL = new URL('https://jsonplaceholder.typicode.com/users');
-const detailsURL = new URL('user-details.html', location.href);
+const detailsURL = new URL('./user-details.html', location.href);
 const usersWrapper = document.getElementById('user-wrapper');
 
 const detailsButtonCreator = (id) => {

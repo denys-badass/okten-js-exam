@@ -9,7 +9,7 @@
 const userId = new URLSearchParams(location.search).get('userId');
 const userURL = `https://jsonplaceholder.typicode.com/users/${userId}`;
 const postsURL = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
-const postDetailsURL = new URL('../post-details.html', location.href);
+const postDetailsURL = new URL('./post-details.html', location.href);
 
 const userAddressFiller = (address) => {
     const city = document.createElement('p');
