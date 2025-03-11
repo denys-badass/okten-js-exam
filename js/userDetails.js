@@ -12,6 +12,7 @@ const postsURL = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
 const postDetailsURL = new URL('./post-details.html', location.href);
 
 const userAddressFiller = (address) => {
+    document.getElementById('address-title').innerText = 'Address';
     const city = document.createElement('p');
     const street = document.createElement('p');
     const location = document.createElement('p');
@@ -22,6 +23,7 @@ const userAddressFiller = (address) => {
     document.getElementById('address').append(city, street, location);
 }
 const userCompanyFiller = (company) => {
+    document.getElementById('company-title').innerText = 'Company';
     const name = document.createElement('h5');
     const catchPhrase = document.createElement('p');
     const bs = document.createElement('p');
@@ -32,6 +34,7 @@ const userCompanyFiller = (company) => {
     document.getElementById('company').append(name, catchPhrase, bs);
 }
 const userContactsFiller = (contacts) => {
+    document.getElementById('contacts-title').innerText = 'Contacts';
     const website = document.createElement('p');
     const email = document.createElement('p');
     const phone = document.createElement('p');
@@ -41,6 +44,16 @@ const userContactsFiller = (contacts) => {
     
     document.getElementById('contacts').append(website, email, phone);
 }
+const collapseBtnCreator = () => {
+    const btn = document.createElement('button');
+    btn.className = 'collapse-btn';
+    btn.innerHTML = `Post of current user`;
+    
+    return btn;
+}
+
+const collapseBtn = collapseBtnCreator();
+const postsDiv = document.getElementById('posts');
 
 const postDetailsBtnCreator = (id) => {
     postDetailsURL.searchParams.set('postId', id);
@@ -58,26 +71,38 @@ const postTitleCreator = (id, title) => {
     postTitleWrap.className = 'post-title';
     postTitle.innerText = title;
     postTitleWrap.append(postTitle, postDetailsBtnCreator(id));
+    
     return postTitleWrap;
 }
+collapseBtn.addEventListener('click', (e) => {
+    collapseBtn.classList.toggle('collapsed');
+    postsDiv.classList.toggle('show');
+})
 
-fetch(userURL)
-    .then(res => res.json())
-    .then(user => {
-        console.log(user);
-        const {id, name, username, address, company, website, email, phone} = user;
-        document.getElementById('user-id-hash').innerText = `#${id}`;
-        document.getElementById('user-title').innerText = `${name} aka "${username}"`;
-        userAddressFiller(address);
-        userCompanyFiller(company);
-        userContactsFiller({website, email, phone});
-    });
+async function userDetailsCreator() {
+    const {
+        id,
+        name,
+        username,
+        address,
+        company,
+        website,
+        email,
+        phone
+    } = await fetch(userURL).then(res => res.json()).then(user => user);
+    const posts = await fetch(postsURL).then(res => res.json()).then(posts => posts);
+    console.log(posts);
+    
+    document.getElementById('user-id-hash').innerText = `#${id}`;
+    document.getElementById('user-title').innerText = `${name} aka "${username}"`;
+    userAddressFiller(address);
+    userCompanyFiller(company);
+    userContactsFiller({website, email, phone});
+    document.getElementById('btn-wrapper').appendChild(collapseBtn);
+    
+    for (const {title, id} of posts) {
+        postsDiv.appendChild(postTitleCreator(id, title));
+    }
+}
 
-fetch(postsURL)
-    .then(res => res.json())
-    .then(posts => {
-        console.log(posts);
-        for (const {title, id} of posts) {
-            document.getElementById('accordion-body').appendChild(postTitleCreator(id, title));
-        }
-    });
+userDetailsCreator();

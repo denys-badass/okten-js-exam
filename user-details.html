@@ -14,25 +14,18 @@
     <h1 class="user-title" id="user-title"></h1>
     <div class="user-details-wrapper">
         <div class="address" id="address">
-            <h3>Address</h3>
+            <h3 id="address-title"></h3>
         </div>
         <div class="company" id="company">
-            <h3>Company</h3>
+            <h3 id="company-title"></h3>
         </div>
         <div class="contacts" id="contacts">
-            <h3>Contacts</h3>
+            <h3 id="contacts-title"></h3>
         </div>
     </div>
-    <div class="accordion accordion-flush" id="accordionFlush">
-        <div class="accordion-item">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapse" aria-controls="flush-collapse">
-                Post of current user
-            </button>
-            <div id="flush-collapse" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
-                <div class="accordion-body" id="accordion-body"></div>
-            </div>
-        </div>
+    <div class="collapse">
+        <div class="btn-wrapper" id="btn-wrapper"></div>
+        <div class="posts" id="posts"></div>
     </div>
 </div>
 <script src="js/userDetails.js"></script>
