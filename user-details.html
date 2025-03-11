@@ -9,23 +9,26 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container-md">
-    <span id="user-id-hash"></span>
-    <h1 class="user-title" id="user-title"></h1>
-    <div class="user-details-wrapper">
-        <div class="address" id="address">
-            <h3 id="address-title"></h3>
+<div class="container">
+    <main class="main-wrapper">
+        <div class="title-wrapper">
+            <span id="user-id-hash" class="id-hash"></span>
+            <h1 class="user-title" id="user-title"></h1>
         </div>
-        <div class="company" id="company">
-            <h3 id="company-title"></h3>
+        <div class="user-details-wrapper">
+            <div class="address" id="address">
+                <h3 id="address-title"></h3>
+            </div>
+            <div class="company" id="company">
+                <h3 id="company-title"></h3>
+            </div>
+            <div class="contacts" id="contacts">
+                <h3 id="contacts-title"></h3>
+            </div>
         </div>
-        <div class="contacts" id="contacts">
-            <h3 id="contacts-title"></h3>
-        </div>
-    </div>
+    </main>
     <div class="collapse">
-        <div class="btn-wrapper" id="btn-wrapper"></div>
-        <div class="posts" id="posts"></div>
+        <div id="posts"></div>
     </div>
 </div>
 <script src="js/userDetails.js"></script>

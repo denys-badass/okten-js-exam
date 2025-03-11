@@ -11,7 +11,7 @@ const usersWrapper = document.getElementById('user-wrapper');
 const detailsButtonCreator = (id) => {
     detailsURL.searchParams.set('userId', id);
     const detailsButton = document.createElement('a');
-    detailsButton.className = 'details-btn btn btn-success';
+    detailsButton.className = 'details-btn';
     detailsButton.innerText = 'Details';
     detailsButton.target = '_blank';
     detailsButton.href = detailsURL.href;
@@ -21,9 +21,9 @@ const detailsButtonCreator = (id) => {
 
 const userDivCreator = (id, name) => {
     const userDiv = document.createElement('div');
-    userDiv.className = 'user-div col-5 p-3';
-    const userId = document.createElement('h4');
-    const userName = document.createElement('p');
+    userDiv.className = 'user-div';
+    const userId = document.createElement('p');
+    const userName = document.createElement('h3');
     const detailsButton = detailsButtonCreator(id);
     
     userId.innerText = `User #${id}`;

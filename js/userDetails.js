@@ -58,7 +58,7 @@ const postsDiv = document.getElementById('posts');
 const postDetailsBtnCreator = (id) => {
     postDetailsURL.searchParams.set('postId', id);
     const postDetailsBtn = document.createElement('a');
-    postDetailsBtn.className = 'details-btn btn btn-success';
+    postDetailsBtn.className = 'details-btn';
     postDetailsBtn.innerText = 'Details';
     postDetailsBtn.target = '_blank';
     postDetailsBtn.href = postDetailsURL.href;
@@ -69,12 +69,12 @@ const postTitleCreator = (id, title) => {
     const postTitleWrap = document.createElement('div');
     const postTitle = document.createElement('h5');
     postTitleWrap.className = 'post-title';
-    postTitle.innerText = title;
+    postTitle.innerHTML = `<span class="pre-title">Post title:</span> ${title}`;
     postTitleWrap.append(postTitle, postDetailsBtnCreator(id));
     
     return postTitleWrap;
 }
-collapseBtn.addEventListener('click', (e) => {
+collapseBtn.addEventListener('click', () => {
     collapseBtn.classList.toggle('collapsed');
     postsDiv.classList.toggle('show');
 })
@@ -98,7 +98,7 @@ async function userDetailsCreator() {
     userAddressFiller(address);
     userCompanyFiller(company);
     userContactsFiller({website, email, phone});
-    document.getElementById('btn-wrapper').appendChild(collapseBtn);
+    document.getElementById('posts').before(collapseBtn)
     
     for (const {title, id} of posts) {
         postsDiv.appendChild(postTitleCreator(id, title));

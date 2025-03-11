@@ -12,14 +12,17 @@ const userUrl = new URL('users', endPointUrl);
 const commentsUrl = new URL(`${postId}/comments`, postUrl);
 
 const commentCreator = (name, email, body) => {
+    const commentHeader = document.createElement('div');
     const commentDiv = document.createElement('div');
+    commentDiv.className = 'comment';
     const commentTitle = document.createElement('h4');
-    commentTitle.innerText = name;
     const senderEmail = document.createElement('p');
+    commentTitle.innerText = name;
     senderEmail.innerHTML = `by <a href="mailto:${email}" target="_blank">${email}</a>`;
+    commentHeader.append(commentTitle, senderEmail);
     const commentBody = document.createElement('p');
     commentBody.innerText = body;
-    commentDiv.append(commentTitle, senderEmail, commentBody);
+    commentDiv.append(commentHeader, commentBody);
     
     return commentDiv;
 }
@@ -29,8 +32,8 @@ async function postDetailsCreator() {
     const {username} = await fetch(`${userUrl}/${userId}`).then(res => res.json()).then(user => user);
     const comments = await fetch(commentsUrl).then(res => res.json()).then(comments => comments);
     
-    document.getElementById('badge').innerText = `Post #${id}`;
-    document.getElementById('post-title').innerText = title;
+    document.getElementById('post-id-hash').innerText = `Post #${id}`;
+    document.getElementById('post-header').innerText = title;
     document.getElementById('post-body').innerText = body;
     document.getElementById('user-posted').innerHTML = `posted by <strong>${username}</strong>`;
     document.getElementById('comments').innerText = 'Comments:';

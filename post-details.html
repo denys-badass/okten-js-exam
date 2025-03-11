@@ -9,13 +9,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="post-wrapper" id="post-wrapper">
-    <p class="badge" id="badge"></p>
-    <h2 class="post-title" id="post-title"></h2>
-    <p class="post-body" id="post-body"></p>
-    <p class="user-posted" id="user-posted"></p>
-    <h3 id="comments"></h3>
-    <div class="comments-wrapper" id="comments-wrapper"></div>
+<div class="container">
+    <main class="main-wrapper">
+        <div class="title-wrapper">
+            <p class="id-hash" id="post-id-hash"></p>
+            <h1 id="post-header"></h1>
+        </div>
+        <div id="post-wrapper">
+            <p id="post-body"></p>
+            <p id="user-posted"></p>
+        </div>
+    </main>
+    <div class="comments-container">
+        <h2 id="comments"></h2>
+        <div id="comments-wrapper"></div>
+    </div>
+
 </div>
 <script src="js/postDetails.js"></script>
 </body>
