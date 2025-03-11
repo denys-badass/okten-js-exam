@@ -91,7 +91,6 @@ async function userDetailsCreator() {
         phone
     } = await fetch(userURL).then(res => res.json()).then(user => user);
     const posts = await fetch(postsURL).then(res => res.json()).then(posts => posts);
-    console.log(posts);
     
     document.getElementById('user-id-hash').innerText = `#${id}`;
     document.getElementById('user-title').innerText = `${name} aka "${username}"`;
