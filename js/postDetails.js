@@ -33,6 +33,7 @@ async function postDetailsCreator() {
     document.getElementById('post-title').innerText = title;
     document.getElementById('post-body').innerText = body;
     document.getElementById('user-posted').innerHTML = `posted by <strong>${username}</strong>`;
+    document.getElementById('comments').innerText = 'Comments:';
     
     for (const {name, body, email} of comments) {
         document.getElementById('comments-wrapper').appendChild(commentCreator(name, email, body));
